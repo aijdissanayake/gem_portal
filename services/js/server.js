@@ -82,6 +82,15 @@ var server = () => {
         });
     });
 
+    //update
+    app.get('/update_type/:value/:new_value',(request,response)=>{
+        let {value,new_value} = request.params;
+        type_model.findOneAndUpdate({value},{value:new_value},{new:true},(error,updatedType)=>{
+            logError(error);
+            response.send(updatedType);
+        });
+    });
+
     //Start the server
     app.listen(3000, () => {
         console.log('App listening on port 3000!')

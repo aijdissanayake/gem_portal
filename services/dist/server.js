@@ -97,6 +97,18 @@ var server = function server() {
         });
     });
 
+    //update
+    app.get('/update_type/:value/:new_value', function (request, response) {
+        var _request$params = request.params,
+            value = _request$params.value,
+            new_value = _request$params.new_value;
+
+        type_model.findOneAndUpdate({ value: value }, { value: new_value }, { new: true }, function (error, updatedType) {
+            logError(error);
+            response.send(updatedType);
+        });
+    });
+
     //Start the server
     app.listen(3000, function () {
         console.log('App listening on port 3000!');
