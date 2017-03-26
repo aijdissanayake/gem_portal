@@ -78,11 +78,22 @@ var server = function server() {
 
     //add
     app.get('/add_type/:value', function (request, response) {
-        var value = request.params.value; //same as stone = req.par.stones
+        var value = request.params.value; //same as stone = req.par.stone
 
         new type_model({ value: value }).save(function (error, savedType) {
+            // same as {value:value}
             logError(error);
             response.send(savedType);
+        });
+    });
+
+    //remove
+    app.get('/remove_type/:value', function (request, response) {
+        var value = request.params.value;
+
+        type_model.remove({ value: value }, function (error, removedType) {
+            logError(error);
+            response.send(removedType);
         });
     });
 
