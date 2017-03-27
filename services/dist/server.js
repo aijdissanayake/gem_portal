@@ -15,6 +15,7 @@ var _mongoose2 = _interopRequireDefault(_mongoose);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
+_mongoose2.default.Promise = global.Promise;
 _mongoose2.default.connect('mongodb://localhost/gem_portal');
 
 var size_model = _mongoose2.default.model('size', {

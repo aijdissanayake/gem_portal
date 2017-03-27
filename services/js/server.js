@@ -2,6 +2,7 @@ import express from 'express';
 import mongoose from 'mongoose';
 
 var app = express();
+mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost/gem_portal');
 
 let size_model = mongoose.model('size',{
